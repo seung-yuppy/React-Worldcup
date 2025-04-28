@@ -39,29 +39,14 @@ export function getSoccermember(id: number) {
   );
 }
 
-// export function getRandommember(id: number) {
-//   const token = localStorage.getItem("jwtToken");
-//   return fetch(`https://render1-host.onrender.com/${id}/random`, {
-//     headers: {
-//       Authorization: `${token ? token : ""}`,
-//     },
-//   }).then((response) => response.json());
-// }
-
-export const getRandommember = async (id: number) => {
+export function getRandommember(id: number) {
   const token = localStorage.getItem("jwtToken");
-  const response = await fetch(
-    `https://render1-host.onrender.com/member/${id}/random`,
-    {
-      headers: {
-        Authorization: `${token ? token : ""}`,
-      },
-    }
-  );
-  const data = await response.json();
-  console.log("데이터", data);
-  return data;
-};
+  return fetch(`https://render1-host.onrender.com/member/${id}/random`, {
+    headers: {
+      Authorization: `${token ? token : ""}`,
+    },
+  }).then((response) => response.json());
+}
 
 export function postResetmember() {
   const token = localStorage.getItem("jwtToken");

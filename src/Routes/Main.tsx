@@ -56,7 +56,8 @@ function Main() {
       }
     );
 
-  console.log("랜덤멤버", randomMembersData);
+  const { data: totalMemberData } = useQuery<ISoccerMember[]>(["totalmember", id], () => getSoccermember(Number(id)), { refetchOnWindowFocus: false })
+  const memberSize = totalMemberData?.length;
 
   const [memberids, setMemberids] = useRecoilState(memberIdsAtom);
   useEffect(() => {
@@ -71,6 +72,27 @@ function Main() {
       });
     }
   }, [randomMembersData, setMemberids]);
+
+    // memberSize를 기준으로 totalquantity 계산하는 로직 추가
+    useEffect(() => {
+      if (memberSize !== undefined) {
+        let quantity = 0;
+        if (memberSize < 2) {
+          quantity = 0;
+        } else if (memberSize < 4) {
+          quantity = 1; // 2명 => 1게임
+        } else if (memberSize < 8) {
+          quantity = 2; // 4명 => 2게임
+        } else if (memberSize < 16) {
+          quantity = 4; // 8명 => 4게임
+        } else if (memberSize < 32) {
+          quantity = 8; // 16명 => 8게임
+        } else {
+          quantity = 16; // 32명 => 16게임
+        }
+        setTotalquantity(quantity);
+      }
+    }, [memberSize, setTotalquantity]);
 
   // 월드컵 멤버 데이터 전체 들고 오기(member table에서) => 총 멤버가 몇명인지 알아야
   // 몇 게임을 진행해야 우승자가 나오는지 계산하기 위함
@@ -100,7 +122,6 @@ function Main() {
       setClickId(null);
       setIsOverlayActive(false);
     }, 300);
-    console.log(memberId);
   };
 
   const onNextRound = async () => {
