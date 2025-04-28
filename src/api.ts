@@ -51,7 +51,7 @@ export function getSoccermember(id: number) {
 export const getRandommember = async (id: number) => {
   const token = localStorage.getItem("jwtToken");
   const response = await fetch(
-    `https://render1-host.onrender.com/${id}/random`,
+    `https://render1-host.onrender.com/member/${id}/random`,
     {
       headers: {
         Authorization: `${token ? token : ""}`,
