@@ -56,6 +56,8 @@ function Main() {
       }
     );
 
+  console.log("랜덤멤버", randomMembersData);
+
   const [memberids, setMemberids] = useRecoilState(memberIdsAtom);
   useEffect(() => {
     if (randomMembersData && Array.isArray(randomMembersData)) {

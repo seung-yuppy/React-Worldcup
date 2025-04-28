@@ -118,7 +118,6 @@ function Rank() {
             <RanksList>
               {data.map((rank, index) => (
                 <RankList key={rank.id || index}>
-                  <a>
                     #{index + 1}
                     {rank.name}
                     <Img
@@ -129,13 +128,13 @@ function Rank() {
                       <CircularProgressbar
                         value={Number(
                           (
-                            (rank.winNum / (rank.winNum + rank.loseNum)) *
+                            (rank.winNum / (rank.loseNum)) *
                             100
                           ).toFixed(2)
                         )}
                         text={
                           (
-                            (rank.winNum / (rank.winNum + rank.loseNum)) *
+                            (rank.winNum / (rank.loseNum)) *
                             100
                           ).toFixed(2) + "%"
                         }
@@ -150,7 +149,6 @@ function Rank() {
                       />
                     </WinRateBox>
                     <WinNum>{rank.victoryNum}회</WinNum>
-                  </a>
                 </RankList>
               ))}
             </RanksList>
