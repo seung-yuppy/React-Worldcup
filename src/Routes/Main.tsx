@@ -91,12 +91,11 @@ function Main() {
       } else {
         quantity = 16; // 32명 => 16게임
       }
-      console.log("실행되냐", quantity);
       setTotalquantity(quantity);
     }
   }, [memberSize, setTotalquantity]);
 
-  console.log(totalquantity);
+  console.log("총 몇명", totalquantity);
 
   // 월드컵 멤버 데이터 전체 들고 오기(member table에서) => 총 멤버가 몇명인지 알아야
   // 몇 게임을 진행해야 우승자가 나오는지 계산하기 위함
@@ -106,11 +105,12 @@ function Main() {
     refetchOnWindowFocus: false,
     onSuccess: (data) => {
       // 데이터가 성공적으로 로드되면 totalquantity를 업데이트
-      if (data) {
-        setTotalquantity(Math.floor(data.length / 2)); // length의 1/2로 설정
-      }
+      // if (data) {
+      //   setTotalquantity(Math.floor(data.length / 2)); // length의 1/2로 설정
+      // }
     },
   });
+
   const [members, setMembers] = useState<ISoccerMember[]>(
     randomMembersData || []
   );
