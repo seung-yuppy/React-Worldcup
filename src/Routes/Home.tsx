@@ -32,7 +32,15 @@ function Home() {
       refetchOnWindowFocus: false,
     }
   );
-  const onClick = (id: number) => navigate(`/main/${id}`);
+  const onClick = (id: number) => {
+    if (isLoggedIn) {
+      navigate(`/main/${id}`)
+    } else {
+      alert("로그인 후 이용해주세요.");
+      navigate("/login");
+    }
+
+  };
   const onClickMemeber = (id: number) => navigate(`/main/${id}/rank`);
   const onGood = (id: number) => {
     postGoodWorldcup(id);

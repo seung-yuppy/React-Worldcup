@@ -46,7 +46,6 @@ function CreateMain() {
         setImageUrl(reader.result as string); // 이미지 미리보기 URL 설정
       };
       reader.readAsDataURL(file); // 파일을 DataURL로 읽음
-
       setMembers(updatedMembers);
     }
   };
@@ -87,7 +86,7 @@ function CreateMain() {
 
         if (response.ok) {
           const result = await response.json();
-          // alert("멤버 추가가 완료되었습니다.");
+          alert("멤버 추가가 완료되었습니다.");
           navigate("/");
           console.log("Member added successfully:", result);
         } else {
