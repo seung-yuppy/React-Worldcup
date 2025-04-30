@@ -178,7 +178,7 @@ function Main() {
                     animate="visible"
                     exit="exit"
                     whileHover="hover"
-                    bgPhoto={`${member.imageUrl}`}
+                    bgPhoto={member.imageUrl}
                     onClick={() => onSelect(member.id)}
                     style={{ pointerEvents: isOverlayActive ? "none" : "auto" }} // Overlay 활성화 시 클릭 방지
                   >
@@ -189,7 +189,7 @@ function Main() {
               {members.length === 1 && (
                 <WinnerBox>
                   <WinnerImage src="https://littledeep.com/wp-content/uploads/2020/03/littledeep_crown_style1.png" />
-                  <Image src={`${members[0].imageUrl}`} />
+                  <Image src={members[0].imageUrl} />
                   <WinnerName>{members[0].name}</WinnerName>
                   <button className={styles.learn_more} onClick={gotoRank}>
                     <span className={styles.circle} aria-hidden="true">

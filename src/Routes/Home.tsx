@@ -62,7 +62,7 @@ function Home() {
             {sortedData.map((worldcup, index) => (
               <Box key={index}>
                 <Image
-                  src={`${worldcup.imageUrl}`}
+                  src={worldcup.imageUrl}
                   onClick={() => onClick(worldcup.id)}
                 />
                 <Title>{worldcup.name}</Title>

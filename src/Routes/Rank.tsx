@@ -121,7 +121,7 @@ function Rank() {
                     #{index + 1}
                     {rank.name}
                     <Img
-                      src={`https://render1-host.onrender.com${rank.imageUrl}`}
+                      src={rank.imageUrl}
                       alt="이미지 없음"
                     />
                     <WinRateBox>
