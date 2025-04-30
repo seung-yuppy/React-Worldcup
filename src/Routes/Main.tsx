@@ -221,9 +221,8 @@ function Main() {
                       <WinBox
                         layoutId={clickId}
                         bgPhoto={
-                          `https://render1-host.onrender.com${members.find((member) => member.id + "" === clickId)
-                            ?.imageUrl
-                          }` || "이미지가 없습니다!"
+                          members.find((member) => member.id + "" === clickId)?.imageUrl ||
+                          "이미지가 없습니다!"
                         }
                       >
                         <BoxName>
