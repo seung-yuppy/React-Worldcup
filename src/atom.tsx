@@ -49,3 +49,14 @@ export const memberIdsAtom = atom<number[]>({
   key: "memberIdsAtom",
   default: [],
 });
+
+const { persistAtom: userId } = recoilPersist({
+  key: "userId",
+  storage: localStorage,
+});
+
+export const userIdAtom = atom({
+  key: "userId",
+  default: "",
+  effects_UNSTABLE: [userId],
+})

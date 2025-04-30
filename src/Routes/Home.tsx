@@ -19,12 +19,14 @@ import {
   Wrapper,
 } from "../Styles/Homestyle";
 import { useRecoilValue } from "recoil";
-import { isDarkAtom, isLoggedInAtom } from "../atom";
+import { isLoggedInAtom, userIdAtom } from "../atom";
 import styles from "../Styles/Main.module.css";
 
 function Home() {
   const navigate = useNavigate();
   const isLoggedIn = useRecoilValue(isLoggedInAtom);
+  const userName = useRecoilValue(userIdAtom);
+  console.log("username : ", userName);
   const { data, isLoading } = useQuery<IWorldcup[]>(
     ["worldcup1"],
     getWorldcup,

@@ -4,13 +4,14 @@ import { useNavigate } from "react-router-dom";
 import styles from "../Styles/Main.module.css";
 import { postLogin } from "../api";
 import { useSetRecoilState } from "recoil";
-import { isLoggedInAtom } from "../atom";
+import { isLoggedInAtom, userIdAtom } from "../atom";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const setIsLoggedIn = useSetRecoilState(isLoggedInAtom);
+  const setUserId = useSetRecoilState(userIdAtom);
   const toggleIsLoggedIn = () => {
     setIsLoggedIn((current: boolean) => !current);
   };
@@ -24,6 +25,7 @@ function Login() {
         localStorage.setItem("jwtToken", token);
         alert("로그인을 성공했습니다!");
         toggleIsLoggedIn();
+        setUserId(username);
         navigate("/");
       } else {
         alert("로그인에 실패했습니다!");

@@ -95,8 +95,6 @@ function Main() {
     }
   }, [memberSize, setTotalquantity]);
 
-  console.log("총 몇명", totalquantity);
-
   // 월드컵 멤버 데이터 전체 들고 오기(member table에서) => 총 멤버가 몇명인지 알아야
   // 몇 게임을 진행해야 우승자가 나오는지 계산하기 위함
   const { data: worldcupmember, isLoading: isLoadingWorldcupmember } = useQuery<
