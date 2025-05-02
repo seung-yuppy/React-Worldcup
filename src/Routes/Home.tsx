@@ -89,7 +89,7 @@ function Home() {
                   </GoodImageWrapper>
                 </ImageWrapper>
                 <ViewsCount>조회수 {worldcup.viewsCount}</ViewsCount>
-                {isLoggedIn ? (
+                {userName === worldcup.createdBy ? (
                   <EditButton onClick={() => onEdit(worldcup.id)}>
                     편집
                   </EditButton>
